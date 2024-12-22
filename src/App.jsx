@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Spline from './Spline.jsx'
+import Spline from '@splinetool/react-spline';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Spline className="h-dvh"/>
-    </>
+    <div className='m-0 p-0'>
+      <Spline className='w-full h-full fixed top-0 left-0' scene="https://draft.spline.design/igHwJT3q2-gfSOye/scene.splinecode" />
+      <p>Loading</p>
+    </div>
   )
 }
 

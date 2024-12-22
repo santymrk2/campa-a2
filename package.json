@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.54",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
