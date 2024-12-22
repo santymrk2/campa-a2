@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Spline />
+      <Spline className="h-dvh"/>
     </>
   )
 }
