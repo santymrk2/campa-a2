@@ -3,6 +3,6 @@ import Spline from '@splinetool/react-spline';
 
 export default function App() {
   return (
-    <Spline scene="https://draft.spline.design/DWrfKv2ngc0nvzu4/scene.splinecode" />
+    <Spline scene="https://prod.spline.design/y78v6iQJSnivWTWK/scene.splinecode" />
   );
 }
