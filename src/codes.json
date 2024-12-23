@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "PERSONA": "",
+            "PARTE": "VOLANTE",
+            "EQUIPO": "MCLAREN",
+            "CODIGO": "9Y2O5Q"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "ESCAPE",
+            "EQUIPO": "MCLAREN",
+            "CODIGO": "1Q1K3L"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "CHAPON",
+            "EQUIPO": "MCLAREN",
+            "CODIGO": "6S8B5E"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "ESPEJO",
+            "EQUIPO": "FERRARI",
+            "CODIGO": "6P2B9A"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "FRENO",
+            "EQUIPO": "FERRARI",
+            "CODIGO": "5B6H7S"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "ALERON",
+            "EQUIPO": "FERRARI",
+            "CODIGO": "8N9K9F"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "RUEDA",
+            "EQUIPO": "REDBULL",
+            "CODIGO": "3L4O4X"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "MOTOR",
+            "EQUIPO": "REDBULL",
+            "CODIGO": "1A4E9J"
+        },
+        {
+            "PERSONA": "",
+            "PARTE": "RUEDA",
+            "EQUIPO": "REDBULL",
+            "CODIGO": "4W7U4Q"
+        }
+    ]
+}
