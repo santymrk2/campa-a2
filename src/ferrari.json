@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "PARTE": "RUEDA",
+            "ESTADO": "FALSE",
+            "CODIGO": "6P2B9A"
+        },
+        {
+            "PARTE": "MOTOR",
+            "ESTADO": "FALSE",
+            "CODIGO": "5B6H7S"
+        },
+        {
+            "PARTE": "ALERON",
+            "ESTADO": "FALSE",
+            "CODIGO": "8N9K9F"
+        }
+    ]
+}

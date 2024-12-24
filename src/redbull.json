@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "parte": "ESPEJO",
+            "estado": false,
+            "codigo": "3L4O4X"
+        },
+        {
+            "parte": "FRENO",
+            "estado": false,
+            "codigo": "1A4E9J"
+        },
+        {
+            "parte": "RUEDA",
+            "estado": false,
+            "codigo": "4W7U4Q"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "PARTE": "VOLANTE",
+            "ESTADO": "FALSE",
+            "CODIGO": "9Y2O5Q"
+        },
+        {
+            "PARTE": "ESCAPE",
+            "ESTADO": "FALSE",
+            "CODIGO": "1Q1K3L"
+        },
+        {
+            "PARTE": "CHAPON",
+            "ESTADO": "FALSE",
+            "CODIGO": "6S8B5E"
+        }
+    ]
+}
