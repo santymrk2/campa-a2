@@ -1,19 +1,29 @@
 {
     "data": [
         {
-            "parte": "ESPEJO",
-            "estado": false,
-            "codigo": "3L4O4X"
+            "parte": "RUEDA",
+            "codigo": "9I2N5S",
+            "estado": false
         },
         {
             "parte": "FRENO",
-            "estado": false,
-            "codigo": "1A4E9J"
+            "codigo": "3H6N2T",
+            "estado": false
         },
         {
-            "parte": "RUEDA",
-            "estado": false,
-            "codigo": "4W7U4Q"
+            "parte": "MOTOR",
+            "codigo": "1M1J6E",
+            "estado": false
+        },
+        {
+            "parte": "ALERON TRASERO",
+            "codigo": "9D4C1W",
+            "estado": false
+        },
+        {
+            "parte": "ESPEJO",
+            "codigo": "1K4L1R",
+            "estado": false
         }
     ]
 }

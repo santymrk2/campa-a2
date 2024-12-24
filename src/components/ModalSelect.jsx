@@ -6,11 +6,12 @@ const ModalSelect = ({part, setPart, functionCheck}) => {
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
   }
+  
   function handleClick() {
     console.log(inputValue);
     functionCheck(part, inputValue)
-    setPart('')
   }
+
   return (
     <div className='flex flex-col justify-center gap-3'>
 
