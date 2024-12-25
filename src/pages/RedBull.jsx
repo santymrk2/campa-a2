@@ -13,9 +13,6 @@ function App() {
   const [alert, setAlert] = useState(false)
   const [success, setSuccess] = useState(false)
 
-
-
-
   function onLoadEvent(spline) {
     setSplineRef(spline) // Guarda una referencia a la instancia de Spline
   }
@@ -84,8 +81,8 @@ function App() {
 
 
   return (
-    <div className='relative h-screen w-screen'>
-      <Suspense fallback={<div className='text-black'>Loading...</div>}>
+    <div className='relative h-screen w-screen overflow-hidden overscroll-none bg-gray-900'>
+      <Suspense fallback={<div className='absolute inset-0 flex items-center justify-center font-black'>Loading...</div>}>
         <div className=" absolute bottom-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10/12 gap-4 z-10">
           { 
             Array.from({ length: level }).map((_, i) => (
@@ -119,6 +116,7 @@ function App() {
           partSelected != '' &&
             <div className='absolute inset-0 flex items-center justify-center bg-black/50 z-20'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
+                {console.log(parts)}
                 <ModalSelect part={partSelected} setPart={setPartSelected} functionCheck={desbloquearParte} />
               </div>
             </div>

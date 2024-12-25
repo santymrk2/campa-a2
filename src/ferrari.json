@@ -1,19 +1,29 @@
 {
     "data": [
         {
-            "PARTE": "RUEDA",
-            "ESTADO": "FALSE",
-            "CODIGO": "6P2B9A"
+            "parte": "RUEDA",
+            "codigo": "6O9K8E",
+            "estado": "FALSE"
         },
         {
-            "PARTE": "MOTOR",
-            "ESTADO": "FALSE",
-            "CODIGO": "5B6H7S"
+            "parte": "ESCAPE",
+            "codigo": "3Z2J7O",
+            "estado": "FALSE"
         },
         {
-            "PARTE": "ALERON",
-            "ESTADO": "FALSE",
-            "CODIGO": "8N9K9F"
+            "parte": "LUZ DE FRENO",
+            "codigo": "6I6B9L",
+            "estado": "FALSE"
+        },
+        {
+            "parte": "CHAPON",
+            "codigo": "7V1T5I",
+            "estado": "FALSE"
+        },
+        {
+            "parte": "VOLANTE",
+            "codigo": "5E6C4A",
+            "estado": "FALSE"
         }
     ]
 }
