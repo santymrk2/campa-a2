@@ -64,7 +64,7 @@ function App() {
   }
 
   function toggleModal() {
-    setShowModal(!showModal)
+    setShowModal(false)
   }
 
   useEffect(() => {
