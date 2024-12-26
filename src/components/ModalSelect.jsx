@@ -1,15 +1,20 @@
 import { useState } from "react";
 
-const ModalSelect = ({part, setPart, functionCheck}) => {
+const ModalSelect = ({part, setPart, functionCheck, toggleModal}) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
   }
   
-  function handleClick() {
-    console.log(inputValue);
+  function handleClickAceptar() {
     functionCheck(part, inputValue)
+    toggleModal();
+  }
+
+  function handleClickCancelar() {
+    setPart('');
+    toggleModal();
   }
 
   return (
@@ -28,8 +33,18 @@ const ModalSelect = ({part, setPart, functionCheck}) => {
           placeholder="codigo"/>
         </div>
       </div>
-      <button className="text-center rounded-md bg-white border px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={handleClick}>Aceptar</button>
-      <button className="text-center rounded-md bg-gray-300 border px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-white hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={() => setPart('')}>Cancelar</button>
+      <button 
+        className="text-center rounded-md bg-white border px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" 
+        onClick={handleClickAceptar}
+      >
+        Aceptar
+      </button>
+      <button
+        className="text-center rounded-md bg-gray-300 border px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-white hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        onClick={handleClickCancelar}
+      >
+        Cancelar
+        </button>
     </div>
 
   );

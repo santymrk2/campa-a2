@@ -7,21 +7,19 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js'
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 function App() {
-  const [parts, setParts] = useLocalStorage('parts-mclaren', PartsJSON.data)
+  const [parts, setParts] = useLocalStorage('parts-mclaren-v1', PartsJSON.data)
   const [level, setLevel] = useState(0)
   const [partSelected, setPartSelected] = useState('')
   const [splineRef, setSplineRef] = useState(null)
   const [alert, setAlert] = useState(false)
   const [success, setSuccess] = useState(false)
-
+  const [showModal, setShowModal] = useState(false)
 
   function onLoadEvent(spline) {
  // Guarda una referencia a la instancia de Spline
     setSplineRef(spline)
 
-    
     if(parts) {
-
         parts.forEach((p) => {
         if(p.estado) spline.setVariable(p.parte, true)
       })
@@ -30,7 +28,6 @@ function App() {
   }
 
   function onSplineMouseDownEvent(e) {
-    setPartSelected('')
     const selection = e.target.name;
 
     let auxParts = parts
@@ -39,10 +36,11 @@ function App() {
 
     if (part.estado === false) {
       setPartSelected(selection);
+      setShowModal(true);
     } else {
       setAlert('El objeto ya fue desbloqueado');
+      setShowModal(false);
     }
-
   }
 
   function desbloquearParte(partName, codigo) {
@@ -60,14 +58,14 @@ function App() {
       // Actualizamos el nivel
       const desbloqueados = parts.filter((p) => p.estado === true).length;
       setLevel(desbloqueados + 1);
-      setPartSelected('')
     } else {
       setAlert('El codigo es incorrecto')
-      setPartSelected('')
     }
-
   }
 
+  function toggleModal() {
+    setShowModal(!showModal)
+  }
 
   useEffect(() => {
     if (success) {
@@ -135,10 +133,10 @@ function App() {
         }
 
         {
-          partSelected !== '' && partSelected !== null &&
+          showModal &&
             <div className='absolute inset-0 flex items-center justify-center bg-black/50 z-20'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
-                <ModalSelect part={partSelected} setPart={setPartSelected} functionCheck={desbloquearParte} />
+                <ModalSelect part={partSelected} setPart={setPartSelected} functionCheck={desbloquearParte} toggleModal={toggleModal} />
               </div>
             </div>
         }
