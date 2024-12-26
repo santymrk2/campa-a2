@@ -7,7 +7,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js'
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 function App() {
-  const [parts, setParts] = useLocalStorage('redbull-parts', PartsJSON.data)
+  const [parts, setParts] = useLocalStorage('parts-ferrari', PartsJSON.data)
   const [level, setLevel] = useState(0)
   const [partSelected, setPartSelected] = useState('')
   const [splineRef, setSplineRef] = useState(null)
@@ -138,7 +138,7 @@ function App() {
         }
 
         {
-          partSelected != '' && partSelected != null &&
+          partSelected !== '' && partSelected !== null &&
             <div className='absolute inset-0 flex items-center justify-center bg-black/50 z-20'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
                 {console.log(parts)}
