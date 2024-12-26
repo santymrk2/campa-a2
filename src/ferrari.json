@@ -3,27 +3,27 @@
         {
             "parte": "RUEDA",
             "codigo": "6O9K8E",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "ESCAPE",
             "codigo": "3Z2J7O",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "LUZ DE FRENO",
             "codigo": "6I6B9L",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "CHAPON",
             "codigo": "7V1T5I",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "VOLANTE",
             "codigo": "5E6C4A",
-            "estado": "FALSE"
+            "estado": false
         }
     ]
 }

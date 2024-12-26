@@ -3,27 +3,27 @@
         {
             "parte": "ALERON TRASERO",
             "codigo": "1F7J1I",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "ESCAPE",
             "codigo": "7K5U3C",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "LUZ DE FRENO",
             "codigo": "8R2O2U",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "ESPEJO",
             "codigo": "3I6W8T",
-            "estado": "FALSE"
+            "estado": false
         },
         {
             "parte": "VOLANTE",
             "codigo": "6V9H4S",
-            "estado": "FALSE"
+            "estado": false
         }
     ]
 }
