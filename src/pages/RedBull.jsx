@@ -18,10 +18,8 @@ function App() {
   function onLoadEvent(spline) {
  // Guarda una referencia a la instancia de Spline
     setSplineRef(spline)
-    console.log(spline)
 
     if(parts) {
-      console.log(parts)
       parts.forEach((p) => {
         if(p.estado) spline.setVariable(p.parte, true)
       })
@@ -30,13 +28,14 @@ function App() {
   }
 
   function onSplineMouseDownEvent(e) {
-    setPartSelected('')
+    setPartSelected('');
+
     const selection = e.target.name;
-    console.log(selection)
-    let auxParts = parts
-    console.log(auxParts)
+
+    let auxParts = parts;
+
     const part = auxParts.find((p) => p.parte == selection);
-    console.log(part)
+
     if (part.estado === false) {
       setPartSelected(selection);
     } else {
@@ -60,15 +59,11 @@ function App() {
       // Actualizamos el nivel
       const desbloqueados = parts.filter((p) => p.estado === true).length;
       setLevel(desbloqueados + 1);
-      console.log("Nivel: ", desbloqueados)
-
-
+      setPartSelected('')
     } else {
       setAlert('El codigo es incorrecto')
+      setPartSelected('')
     }
-    setPartSelected('')
-    console.log("Este log es que se ejecuta la limpieza de la seleccion", partSelected)
-
   }
 
 
@@ -141,7 +136,6 @@ function App() {
           partSelected !== '' && partSelected !== null &&
             <div className='absolute inset-0 flex items-center justify-center bg-black/50 z-20'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
-                {console.log(parts)}
                 <ModalSelect part={partSelected} setPart={setPartSelected} functionCheck={desbloquearParte} />
               </div>
             </div>
