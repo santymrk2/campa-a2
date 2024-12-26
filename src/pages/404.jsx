@@ -1,7 +1,7 @@
 const Page404 = () => {
     return(
         <>
-            <p>Estas perdido broo?</p>
+            <h1>Que haces acá, tendrias que estar jugando!</h1>
         </>
     )
 }

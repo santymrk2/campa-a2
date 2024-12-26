@@ -3,18 +3,30 @@ import ModalSelect from '../components/ModalSelect.jsx'
 import PartsJSON from '../redbull.json'
 import Alert from '../components/Alert.jsx'
 import Success from '../components/Success.jsx'
+import { useLocalStorage } from '../hooks/useLocalStorage.js'
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 function App() {
-  const [parts, setParts] = useState(PartsJSON.data);
+  const [parts, setParts] = useLocalStorage('redbull-parts', PartsJSON.data)
   const [level, setLevel] = useState(0)
   const [partSelected, setPartSelected] = useState('')
   const [splineRef, setSplineRef] = useState(null)
   const [alert, setAlert] = useState(false)
   const [success, setSuccess] = useState(false)
 
+
   function onLoadEvent(spline) {
-    setSplineRef(spline) // Guarda una referencia a la instancia de Spline
+ // Guarda una referencia a la instancia de Spline
+    setSplineRef(spline)
+    console.log(spline)
+
+    if(parts) {
+      console.log(parts)
+      parts.forEach((p) => {
+        if(p.estado) spline.setVariable(p.parte, true)
+      })
+      setLevel(parts.filter((p) => p.estado === true).length)
+    }
   }
 
   function onSplineMouseDownEvent(e) {
@@ -22,6 +34,7 @@ function App() {
     const selection = e.target.name;
     console.log(selection)
     let auxParts = parts
+    console.log(auxParts)
     const part = auxParts.find((p) => p.parte == selection);
     console.log(part)
     if (part.estado === false) {
@@ -54,6 +67,8 @@ function App() {
       setAlert('El codigo es incorrecto')
     }
     setPartSelected('')
+    console.log("Este log es que se ejecuta la limpieza de la seleccion", partSelected)
+
   }
 
 
@@ -79,9 +94,19 @@ function App() {
     }
   }, [alert]);
 
+  useEffect(() => {
+    if(parts && splineRef) {
+      console.log(parts)
+      parts.forEach((p) => {
+        if(p.estado) splineRef.setVariable(p.parte, true)
+      })
+      setLevel(parts.filter((p) => p.estado === true).length)
+    }
+  }, []);
+
 
   return (
-    <div className='relative h-screen w-screen overflow-hidden overscroll-none bg-gray-900'>
+    <div className='relative h-screen w-screen overflow-hidden overscroll-none bg-zinc-700'>
       <Suspense fallback={<div className='absolute inset-0 flex items-center justify-center font-black'>Loading...</div>}>
         <div className=" absolute bottom-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10/12 gap-4 z-10">
           { 
@@ -113,7 +138,7 @@ function App() {
         }
 
         {
-          partSelected != '' &&
+          partSelected != '' || partSelected == null &&
             <div className='absolute inset-0 flex items-center justify-center bg-black/50 z-20'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
                 {console.log(parts)}
