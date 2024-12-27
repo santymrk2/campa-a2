@@ -133,7 +133,7 @@ function App() {
         }
 
         {
-          partSelected !== '' && partSelected !== null &&
+          showModal &&
             <div className='absolute inset-0 flex items-center justify-center bg-black/50 z-20'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
                 <ModalSelect part={partSelected} setPart={setPartSelected} functionCheck={desbloquearParte} toggleModal={toggleModal} />
