@@ -3,16 +3,18 @@ import ModalSelect from '../components/ModalSelect.jsx'
 import PartsJSON from '../mclaren.json'
 import Alert from '../components/Alert.jsx'
 import Success from '../components/Success.jsx'
+import Warning from '../components/Warning.jsx';
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
-function App() {
-  const [parts, setParts] = useLocalStorage('parts-mclaren-v1', PartsJSON.data)
+function McLaren() {
+  const [parts, setParts] = useLocalStorage('parts-mclaren-v2', PartsJSON.data)
   const [level, setLevel] = useState(0)
   const [partSelected, setPartSelected] = useState('')
   const [splineRef, setSplineRef] = useState(null)
   const [alert, setAlert] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [warning, setWarning] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
   function onLoadEvent(spline) {
@@ -28,18 +30,18 @@ function App() {
   }
 
   function onSplineMouseDownEvent(e) {
-    const selection = e.target.name;
+    const selection = e.target.name
 
     let auxParts = parts
 
-    const part = auxParts.find((p) => p.parte == selection);
+    const part = auxParts.find((p) => p.parte == selection)
 
     if (part.estado === false) {
-      setPartSelected(selection);
-      setShowModal(true);
+      setPartSelected(selection)
+      setShowModal(true)
     } else {
-      setAlert('El objeto ya fue desbloqueado');
-      setShowModal(false);
+      setWarning('El objeto ya fue desbloqueado')
+      setShowModal(false)
     }
   }
 
@@ -48,18 +50,13 @@ function App() {
     if(parts.find((p) => p.parte == partName).codigo == codigo) {
       // Cambiamos el estado de la parte
       setParts(parts.map((p) => p.parte == partName ? {...p, estado: true} : p))
-
       // Desbloqueamos el objeto en el spline
       splineRef.setVariable(partName, true)
-
       // Mostramos el mensaje de exito
       setSuccess(true)
-
-      // Actualizamos el nivel
-      const desbloqueados = parts.filter((p) => p.estado === true).length;
-      setLevel(desbloqueados + 1);
     } else {
       setAlert('El codigo es incorrecto')
+      setPartSelected('')
     }
   }
 
@@ -70,6 +67,7 @@ function App() {
   useEffect(() => {
     if (success) {
       setAlert(false);
+      setWarning(false);
       const timer = setTimeout(() => {
         setSuccess(false);
       }, 10000/2); 
@@ -81,6 +79,7 @@ function App() {
   useEffect(() => {
     if (alert) {
       setSuccess(false);
+      setWarning(false);
       const timer = setTimeout(() => {
         setAlert(false);
       }, 10000/2); 
@@ -89,19 +88,31 @@ function App() {
     }
   }, [alert]);
 
+  
+  useEffect(() => {
+    if (warning) {
+      setSuccess(false);
+      setAlert(false);
+      const timer = setTimeout(() => {
+        setWarning(false);
+      }, 10000/2); 
+
+      return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+    }
+  }, [warning]);
+
   useEffect(() => {
     if(parts && splineRef) {
-      console.log(parts)
       parts.forEach((p) => {
         if(p.estado) splineRef.setVariable(p.parte, true)
       })
       setLevel(parts.filter((p) => p.estado === true).length)
     }
-  }, []);
+  }, [parts]);
 
 
   return (
-    <div className='relative h-screen w-screen overflow-hidden overscroll-none bg-zinc-700'>
+    <div className='relative transform-none h-dvh w-screen overflow-hidden overscroll-none bg-zinc-700'>
       <Suspense fallback={<div className='absolute inset-0 flex items-center justify-center font-black'>Loading...</div>}>
         <div className=" absolute bottom-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10/12 gap-4 z-10">
           { 
@@ -126,6 +137,13 @@ function App() {
         }
 
         {
+          warning && 
+          <div className=' absolute top-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10/12' >
+            <Warning className='mt-4' strong="" text={warning}/>
+          </div>
+        }
+
+        {
           success && 
           <div className=' absolute top-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10/12' >
             <Success className='mt-4' strong="Codigo Ingresado con Exito"/>
@@ -145,4 +163,4 @@ function App() {
   )
 }
 
-export default App
+export default McLaren
